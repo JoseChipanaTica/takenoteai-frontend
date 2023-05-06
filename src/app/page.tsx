@@ -3,16 +3,16 @@
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [recordID, setRecordID] = useState(false)
+  const [recordID, setRecordID] = useState('')
   const [recording, setRecording] = useState(false)
-  const [mediaRecorder, setMediaRecorder] = useState(null)
-  const [streamAudio, setStreamAudio] = useState(null)
-  const [responseData, setResponseData] = useState([])
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null)
+  const [streamAudio, setStreamAudio] = useState<MediaStreamTrack | null>(null)
+  const [responseData, setResponseData] = useState<Array<{ key: string; value: string; }>>([])
   const [scriptText, setScriptText] = useState('')
   const [srcAudio, setSrcAudio] = useState('')
 
-  let chunks = []
-  let chunkByMinute = []
+  let chunks: any[] = []
+  let chunkByMinute: any[] = []
 
 
   useEffect(() => {
