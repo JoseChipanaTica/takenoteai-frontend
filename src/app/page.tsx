@@ -90,7 +90,7 @@ export default function Home() {
 
     chunkByMinute = []
 
-    fetch('18.101.33.54:3000/upload-audio/' + recordID, {
+    fetch('http://18.101.33.54:3000/upload-audio/' + recordID, {
       method: 'POST',
       body: formData
     })
@@ -110,7 +110,7 @@ export default function Home() {
 
   function createNewRecord() {
 
-    return fetch('18.101.33.54:3000/new-record', {
+    return fetch('http://18.101.33.54:3000/new-record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })
