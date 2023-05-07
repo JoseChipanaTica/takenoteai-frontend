@@ -92,7 +92,8 @@ export default function Home() {
 
     fetch('http://18.101.33.54:3000/upload-audio/' + recordID, {
       method: 'POST',
-      body: formData
+      body: formData,
+      mode: 'cors'
     })
       .then(res => res.json())
       .then((res: { script: string, answers: Array<{ key: string, value: string }> }) => {
@@ -112,7 +113,8 @@ export default function Home() {
 
     return fetch('http://18.101.33.54:3000/new-record', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'cors'
     })
       .then(res => res.json())
       .then((res: { id: string }) => {
