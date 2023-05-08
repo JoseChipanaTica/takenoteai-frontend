@@ -25,8 +25,6 @@ export default function Home() {
           setMediaRecorder(recorder)
           recorder.start()
 
-          setStreamAudio(stream.getAudioTracks()[0])
-
           recorder.addEventListener('dataavailable', event => {
             chunks.push(event.data)
             chunkByMinute.push(event.data)
@@ -38,15 +36,10 @@ export default function Home() {
             const src = URL.createObjectURL(blob)
 
             setSrcAudio(src)
+            stream.getAudioTracks()[0].stop()
             handleSendClick()
           })
 
-          interval = setInterval(() => {
-            if (recording) {
-              recorder?.stop()
-              recorder?.start()
-            }
-          }, 1000 * 60)
         })
         .catch(error => console.error(error))
     } else {
@@ -56,18 +49,6 @@ export default function Home() {
         mediaRecorder.stop()
         streamAudio?.stop()
       }
-    }
-
-    if (recordID) {
-      console.log(recordID)
-    }
-
-    if (responseData) {
-      console.log(responseData)
-    }
-
-    if (srcAudio) {
-      console.log(srcAudio)
     }
   }, [recording, recordID, responseData, scriptText, srcAudio])
 
