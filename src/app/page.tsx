@@ -34,7 +34,7 @@ export default function Home() {
 
           recorder.addEventListener('stop', () => {
 
-            const blob = new Blob(chunks, { type: 'audio/ogg' })
+            const blob = new Blob(chunks, { type: 'audio/webm' })
             const src = URL.createObjectURL(blob)
 
             setSrcAudio(src)
@@ -84,9 +84,9 @@ export default function Home() {
 
   function handleSendClick() {
 
-    const audioBlob = new Blob(chunkByMinute, { type: 'audio/ogg' })
+    const audioBlob = new Blob(chunkByMinute, { type: 'audio/webm' })
     const formData = new FormData()
-    formData.append('audio', audioBlob, 'recording.ogg')
+    formData.append('audio', audioBlob, 'recording.webm')
 
     chunkByMinute = []
 
