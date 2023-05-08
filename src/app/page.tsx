@@ -90,7 +90,7 @@ export default function Home() {
 
     chunkByMinute = []
 
-    fetch('https://18.101.33.54:3000/upload-audio/' + recordID, {
+    fetch('https://takenote-ai.bio/upload-audio/' + recordID, {
       method: 'POST',
       body: formData,
       mode: 'cors'
@@ -111,7 +111,7 @@ export default function Home() {
 
   function createNewRecord() {
 
-    return fetch('https://18.101.33.54:3000/new-record', {
+    return fetch('https://takenote-ai.bio/new-record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors'
