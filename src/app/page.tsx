@@ -10,12 +10,16 @@ export default function Home() {
   const [scriptText, setScriptText] = useState('')
   const [srcAudio, setSrcAudio] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [questions, setQuestions] = useState([])
 
   let chunks: any[] = []
   let chunkByMinute: any[] = []
 
 
   useEffect(() => {
+
+    getQuestions().then(r => {
+    })
 
     if (recording) {
       navigator.mediaDevices.getUserMedia({ audio: true })
@@ -51,6 +55,9 @@ export default function Home() {
   const createRecordStartRecording = () => {
     createNewRecord()
       .then(() => {
+        setScriptText('')
+        setSrcAudio('')
+        setResponseData([])
         setRecording(prev => !prev)
       })
   }
@@ -61,9 +68,9 @@ export default function Home() {
 
   function handleSendClick() {
 
-    const audioBlob = new Blob(chunkByMinute, { type: 'audio/ogg' })
+    const audioBlob = new Blob(chunkByMinute, { type: 'audio/webm' })
     const formData = new FormData()
-    formData.append('audio', audioBlob, 'recording.ogg')
+    formData.append('audio', audioBlob, 'recording.webm')
 
     chunkByMinute = []
 
@@ -102,6 +109,18 @@ export default function Home() {
       .then(res => res.json())
       .then((res: { id: string }) => {
         setRecordID(res.id)
+      })
+  }
+
+  function getQuestions() {
+    return fetch('https://takenote-ai.bio/questions', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'cors'
+    })
+      .then(res => res.json())
+      .then((questions: Array<{ _id: string, key: string, question: string }>) => {
+        setQuestions(questions)
       })
   }
 
@@ -258,6 +277,39 @@ export default function Home() {
                   }
                 </div>
               </div>
+            </div>
+
+            <div className='p-5'>
+              <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
+                <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+                  <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                  <tr>
+                    <th scope='col' className='px-6 py-3'>
+                      Clave
+                    </th>
+                    <th scope='col' className='px-6 py-3'>
+                      Pregunta
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {
+                    questions.map(it => (
+                      <tr key={it._id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                        <th scope='row'
+                            className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                          {it.key}
+                        </th>
+                        <td className='px-6 py-4'>
+                          {it.question}
+                        </td>
+                      </tr>
+                    ))
+                  }
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           </div>
           {/* <div className='px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36'>
