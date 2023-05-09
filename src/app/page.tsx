@@ -10,7 +10,7 @@ export default function Home() {
   const [scriptText, setScriptText] = useState('')
   const [srcAudio, setSrcAudio] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState<Array<{ _id: string; key: string; question: string; }>>([])
 
   let chunks: any[] = []
   let chunkByMinute: any[] = []
