@@ -149,7 +149,7 @@ export default function Home() {
            Transforma tu voz en texto de manera eficiente con nuestra inteligencia artificial
           </h1>
           <p className='mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400'>
-          </p¡Bienvenido/a a TakeNoteAI, nuestra plataforma líder en transcripción de voz a texto! Gracias a nuestros avanzados servicios de inteligencia artificial, podemos ayudarte a transformar tus grabaciones de audio en texto escrito de manera rápida y precisa.>
+          ¡Bienvenido/a a TakeNoteAI, nuestra plataforma líder en transcripción de voz a texto! Gracias a nuestros avanzados servicios de inteligencia artificial, podemos ayudarte a transformar tus grabaciones de audio en texto escrito de manera rápida y precisa.</p>
           <div className='mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4'>
 
             <div
