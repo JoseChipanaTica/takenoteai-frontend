@@ -148,7 +148,7 @@ export default function Home() {
            md:text-5xl lg:text-6xl dark:text-white tracking-normal'>
             Deja que TakeNoteAI escriba la información del usuario por ti
           </h1>
-          <p className='mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400'>Here at
+          <p className='mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400'>
             TakeNoteAI se encarga de escribir la información del usuario, así que no te preocupes por hacerlo tú mismo
           </p>
           <div className='mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4'>
