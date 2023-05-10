@@ -76,7 +76,7 @@ export default function Home() {
 
     setIsLoading(true)
 
-    fetch('https://takenote-ai.bio/upload-audio/' + recordID, {
+    fetch('https://www.takenote-ai.bio/upload-audio/' + recordID, {
       method: 'POST',
       body: formData,
       mode: 'cors'
@@ -101,7 +101,7 @@ export default function Home() {
 
   function createNewRecord() {
 
-    return fetch('https://takenote-ai.bio/new-record', {
+    return fetch('https://www.takenote-ai.bio/new-record', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors'
@@ -113,7 +113,7 @@ export default function Home() {
   }
 
   function getQuestions() {
-    return fetch('https://takenote-ai.bio/questions', {
+    return fetch('https://www.takenote-ai.bio/questions', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors'
